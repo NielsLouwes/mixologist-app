@@ -2,6 +2,13 @@ import DrinkForm from "@/components/DrinkForm";
 import { Cocktail } from "@/types/global-types";
 import Image from "next/image";
 
+/* to do
+1. Add input to search for ingredient
+2. Search for products
+3. Add screen until user has searched
+4. Suspence ?
+*/
+
 export default async function Home() {
   const fetchRandomCocktail = async (): Promise<Cocktail | undefined> => {
     try {
@@ -21,8 +28,6 @@ export default async function Home() {
 
   const cocktail: Cocktail | undefined = await fetchRandomCocktail();
   const drink = cocktail?.drinks[0];
-
-  console.log("cocktail", drink);
 
   const getIngredients = () => {
     let count = 0;

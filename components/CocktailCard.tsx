@@ -1,15 +1,8 @@
+import { Drink } from "@/types/global-types";
 import Image from "next/image";
 import Link from "next/link";
 
-type Drink = {
-  idDrink: string;
-  strDrink: string;
-  strDrinkThumb: string;
-};
-
 function CocktailCard({ drink }: { drink: Drink }) {
-  console.log("drink", drink);
-
   return (
     <Link href={`/cocktail/${drink.idDrink}`}>
       <li

@@ -3,7 +3,6 @@ import Image from "next/image";
 
 const CocktailDetailsPage = async ({ params }) => {
   const { id } = await params;
-  console.log("id", id);
 
   const fetchCocktailById = async (): Promise<Cocktail | undefined> => {
     try {
@@ -22,7 +21,6 @@ const CocktailDetailsPage = async ({ params }) => {
   };
 
   const cocktail = await fetchCocktailById();
-  console.log("cocktail", cocktail);
 
   return (
     <div>

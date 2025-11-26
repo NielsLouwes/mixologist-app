@@ -1,12 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 const DrinkForm = ({ ingredients }: { ingredients: string[] }) => {
   const router = useRouter();
-  const [results, setResults] = useState(null);
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -22,11 +19,6 @@ const DrinkForm = ({ ingredients }: { ingredients: string[] }) => {
       ingredients: JSON.stringify(ingredients),
     });
 
-    // Debug: Log the actual values
-    console.log("User guesses:", guesses);
-    console.log("Actual ingredients:", ingredients);
-
-    // Navigate to result page
     router.push(`/result?${params.toString()}`);
   };
   return (

@@ -28,3 +28,9 @@ export type Cocktail = {
     strMeasure10: string | null;
   }[];
 };
+
+export type Drink = {
+  idDrink: string;
+  strDrink: string;
+  strDrinkThumb: string;
+};
