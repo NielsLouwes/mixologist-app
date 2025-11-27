@@ -1,7 +1,7 @@
 import { Drink } from "@/types/global-types";
 import { ReadonlyURLSearchParams } from "next/navigation";
 
-export const getIngredients = (drink: Drink) => {
+export const getIngredients = (drink?: Drink) => {
   if (!drink) {
     return {
       ingredients: [],
@@ -10,38 +10,25 @@ export const getIngredients = (drink: Drink) => {
     };
   }
 
-  let count = 0;
   const ingredients: string[] = [];
   const measurements: string[] = [];
-  const combined: string[] = [];
 
-  for (const key in drink) {
-    if (key.startsWith("strIngredient")) {
-      const value = drink[key as keyof Drink];
+  for (let i = 1; i <= 10; i++) {
+    const ingredient = drink[`strIngredient${i}` as keyof Drink];
+    const measure = drink[`strMeasure${i}` as keyof Drink];
 
-      if (value !== null && typeof value === "string") {
-        count++;
-        ingredients.push(value);
-      }
-    }
-
-    if (key.startsWith("strMeasure")) {
-      const value = drink[key as keyof Drink];
-
-      if (value !== null && typeof value === "string") {
-        measurements.push(value);
-      }
-    }
+    if (ingredient) ingredients.push(ingredient);
+    if (measure) measurements.push(measure);
   }
 
-  for (let i = 0; i < ingredients.length; i++) {
-    combined.push(`${ingredients[i]} - ${measurements[i]}`);
-  }
+  const combined = ingredients.map((ing, idx) =>
+    measurements[idx] ? `${ing} - ${measurements[idx]}` : ing
+  );
 
   return {
-    ingredients: ingredients,
-    ingredientCount: count,
-    combined: combined,
+    ingredients,
+    ingredientCount: ingredients.length,
+    combined,
   };
 };
 
@@ -50,5 +37,6 @@ export const parseAndLowerCase = (
   searchParams: ReadonlyURLSearchParams
 ): string[] => {
   const value = searchParams.get(key) || "[]";
+
   return (JSON.parse(value) as string[]).map((item) => item.toLowerCase());
 };
