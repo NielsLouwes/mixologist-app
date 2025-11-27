@@ -1,36 +1,19 @@
-export type Cocktail = {
-  drinks: {
-    idDrink: string;
-    strCategoru: string;
-    strDrink: string;
-    strDrinkThumb: string;
-    strGlass: string;
-    strInstructions: string;
-    strIngredient: string | null;
-    strIngredient2: string | null;
-    strIngredient3: string | null;
-    strIngredient4: string | null;
-    strIngredient5: string | null;
-    strIngredient6: string | null;
-    strIngredient7: string | null;
-    strIngredient8: string | null;
-    strIngredient9: string | null;
-    strIngredient10: string | null;
-    strMeasure1: string | null;
-    strMeasure2: string | null;
-    strMeasure3: string | null;
-    strMeasure4: string | null;
-    strMeasure5: string | null;
-    strMeasure6: string | null;
-    strMeasure7: string | null;
-    strMeasure8: string | null;
-    strMeasure9: string | null;
-    strMeasure10: string | null;
-  }[];
-};
+type IngredientKeys = `strIngredient${number}`;
+type MeasureKeys = `strMeasure${number}`;
 
 export type Drink = {
   idDrink: string;
+  strCategory: string;
   strDrink: string;
   strDrinkThumb: string;
+  strGlass: string;
+  strInstructions: string;
+} & {
+  [K in IngredientKeys | MeasureKeys]?: string | null;
+};
+
+export type SimpleDrink = Pick<Drink, "idDrink" | "strDrink" | "strDrinkThumb">;
+
+export type CocktailData = {
+  drinks: Drink[];
 };

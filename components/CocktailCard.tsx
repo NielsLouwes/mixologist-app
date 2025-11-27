@@ -1,8 +1,8 @@
-import { Drink } from "@/types/global-types";
+import { SimpleDrink } from "@/types/global-types";
 import Image from "next/image";
 import Link from "next/link";
 
-const CocktailCard = ({ drink }: { drink: Drink }) => {
+const CocktailCard = ({ drink }: { drink: SimpleDrink }) => {
   return (
     <Link href={`/cocktail/${drink.idDrink}`}>
       <li

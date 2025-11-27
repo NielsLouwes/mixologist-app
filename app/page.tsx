@@ -1,16 +1,10 @@
 import DrinkForm from "@/components/DrinkForm";
-import { Cocktail } from "@/types/global-types";
+import { CocktailData } from "@/types/global-types";
+import { getIngredients } from "@/utils/global-utils";
 import Image from "next/image";
 
-/* to do
-1. Add input to search for ingredient
-2. Search for products
-3. Add screen until user has searched
-4. Suspence ?
-*/
-
 export default async function Home() {
-  const fetchRandomCocktail = async (): Promise<Cocktail | undefined> => {
+  const fetchRandomCocktail = async (): Promise<CocktailData | undefined> => {
     try {
       const response = await fetch(
         "https://www.thecocktaildb.com/api/json/v1/1/random.php"
@@ -26,30 +20,16 @@ export default async function Home() {
     }
   };
 
-  const cocktail: Cocktail | undefined = await fetchRandomCocktail();
+  const cocktail: CocktailData | undefined = await fetchRandomCocktail();
   const drink = cocktail?.drinks[0];
 
-  const getIngredients = () => {
-    let count = 0;
-    const ingredients: string[] = [];
+  if (!drink) {
+    return <div>No cocktail found</div>;
+  }
 
-    for (const key in drink) {
-      if (key.startsWith("strIngredient")) {
-        const value = drink[key];
+  const { ingredients, ingredientCount } = getIngredients(drink);
 
-        if (value !== null) {
-          count++;
-          ingredients.push(value);
-        }
-      }
-    }
-
-    return { ingredients: ingredients, ingredientCount: count };
-  };
-
-  const { ingredients, ingredientCount } = getIngredients();
-
-  if (!cocktail) {
+  if (!drink) {
     return <div>No cocktail found</div>;
   }
 

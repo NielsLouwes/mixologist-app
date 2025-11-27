@@ -2,14 +2,14 @@
 
 import React, { useMemo, useState } from "react";
 import CocktailCard from "./CocktailCard";
-import { Drink } from "@/types/global-types";
+import { SimpleDrink } from "@/types/global-types";
 
 const DrinkList = ({
   ingredient,
   cocktails,
 }: {
   ingredient: string;
-  cocktails: Drink[];
+  cocktails: SimpleDrink[];
 }) => {
   const [sortType, setSortType] = useState<"asc" | "desc">("asc");
 
@@ -59,10 +59,10 @@ const DrinkList = ({
         )}
       </div>
       {sortedCocktails.length === 0 ? (
-        <p>No cocktails found for {ingredient}. Try another one.</p>
+        <p>No cocktails found for {ingredient}. Try another ingredient.</p>
       ) : (
         <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 list-none p-0 m-0 mt-4">
-          {sortedCocktails.map((drink: Drink) => (
+          {sortedCocktails.map((drink: SimpleDrink) => (
             <CocktailCard key={drink.idDrink} drink={drink} />
           ))}
         </ul>

@@ -1,14 +1,13 @@
 "use client";
+import { parseAndLowerCase } from "@/utils/global-utils";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
 export default function ResultPage() {
   const searchParams = useSearchParams();
 
-  const ingredients: string[] =
-    JSON.parse(searchParams.get("ingredients")?.toLowerCase()) || [];
-  const guesses: string[] =
-    JSON.parse(searchParams.get("guesses")?.toLowerCase()) || [];
+  const ingredients = parseAndLowerCase("ingredients", searchParams);
+  const guesses = parseAndLowerCase("guesses", searchParams);
 
   const correctCount = guesses?.filter((guess) =>
     ingredients.includes(guess)
