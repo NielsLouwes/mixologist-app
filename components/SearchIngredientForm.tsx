@@ -4,7 +4,7 @@ import React from "react";
 const SearchIngredientForm = () => {
   return (
     <div>
-      <form action={searchCocktail} className="mb-8" method="POST">
+      <form action={searchCocktail} className="mb-2 md:mb-8">
         <label className="mr-8" htmlFor="cocktail-input">
           Enter ingredient name:
         </label>

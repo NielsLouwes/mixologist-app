@@ -2,7 +2,7 @@ import { Drink } from "@/types/global-types";
 import Image from "next/image";
 import Link from "next/link";
 
-function CocktailCard({ drink }: { drink: Drink }) {
+const CocktailCard = ({ drink }: { drink: Drink }) => {
   return (
     <Link href={`/cocktail/${drink.idDrink}`}>
       <li
@@ -27,6 +27,6 @@ function CocktailCard({ drink }: { drink: Drink }) {
       </li>
     </Link>
   );
-}
+};
 
 export default CocktailCard;

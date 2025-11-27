@@ -26,9 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased py-2 px-8 md:py-8 md:px-42 bg-slate-100`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased py-2 px-4 md:py-8 md:px-42 bg-slate-100`}
       >
-        <div className="flex gap-12 mb-10 ">
+        <div className="flex gap-12 mb-2 md:mb-10 ">
           <Link href="/">
             <button className="cursor-pointer">Home</button>
           </Link>
