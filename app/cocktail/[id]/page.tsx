@@ -32,28 +32,56 @@ const CocktailDetailsPage = async ({
   const { measuredIngredients } = getIngredients(drink);
 
   return (
-    <div>
-      <h1 className="font-bold">Cocktail name</h1>
-      <span>{drink.strDrink}</span>
-      <div>
-        <Image
-          src={drink.strDrinkThumb}
-          alt={drink.strDrink}
-          sizes="(max-width: 768px) 25vw, (max-width: 1024px) 33vw, 25vw"
-          loading="lazy"
-          height={300}
-          width={300}
-          className="object-cover transition-transform duration-300 group-hover:scale-110"
-        />
+    <div className="max-w-4xl mx-auto">
+      <div className="brutal-border bg-[#FF6347] p-6 mb-6 brutal-shadow-lg">
+        <h1 className="font-black text-3xl md:text-4xl uppercase tracking-tight mb-2">
+          Cocktail name
+        </h1>
+        <p className="font-bold text-xl md:text-2xl">{drink.strDrink}</p>
       </div>
-      <h2 className="font-bold my-4">Ingredients and measurements</h2>
-      <ul>
-        {measuredIngredients.map((ingredient) => (
-          <li key={ingredient}>{ingredient}</li>
-        ))}
-      </ul>
-      <h2 className="font-bold my-2">Instructions</h2>
-      <p>{drink.strInstructions}</p>
+
+      <div className="flex flex-col md:flex-row gap-6 mb-6">
+        <div className="brutal-border bg-white p-4 brutal-shadow-sm">
+          <Image
+            src={drink.strDrinkThumb}
+            alt={drink.strDrink}
+            sizes="(max-width: 768px) 100vw, 400px"
+            loading="lazy"
+            height={400}
+            width={400}
+            className="w-full h-auto max-h-[400px] object-cover"
+          />
+        </div>
+
+        <div className="flex-1">
+          <div className="brutal-border bg-[#90EE90] p-6 mb-4 brutal-shadow-sm">
+            <h2 className="font-black text-xl md:text-2xl uppercase mb-4">
+              Ingredients and measurements
+            </h2>
+            <ul className="space-y-2">
+              {measuredIngredients.map((ingredient) => (
+                <li
+                  key={ingredient}
+                  className="brutal-border bg-white px-4 py-2 font-bold brutal-shadow-sm"
+                >
+                  {ingredient}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div className="brutal-border bg-[#9370DB] p-6 brutal-shadow-lg">
+        <h2 className="font-black text-xl md:text-2xl uppercase mb-4">
+          Instructions
+        </h2>
+        <div className="brutal-border bg-white p-6 brutal-shadow-sm">
+          <p className="font-bold text-base md:text-lg leading-relaxed">
+            {drink.strInstructions}
+          </p>
+        </div>
+      </div>
     </div>
   );
 };

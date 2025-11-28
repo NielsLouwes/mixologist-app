@@ -2,7 +2,14 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
+  --color-yellow: #ffd700;
+  --color-pink: #ff69b4;
+  --color-blue: #87ceeb;
+  --color-green: #90ee90;
+  --color-orange: #ff6347;
+  --color-purple: #9370db;
+  --color-gray: #f5f5f5;
 }
 
 @theme inline {
@@ -12,15 +19,29 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-weight: 600;
+}
+
+.brutal-shadow {
+  box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.brutal-shadow-sm {
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.brutal-shadow-lg {
+  box-shadow: 8px 8px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.brutal-border {
+  border: 6px solid #000000;
+}
+
+.brutal-border-thick {
+  border: 8px solid #000000;
 }

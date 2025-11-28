@@ -7,20 +7,20 @@ const CocktailCard = ({ drink }: { drink: SimpleDrink }) => {
     <Link href={`/cocktail/${drink.idDrink}`}>
       <li
         key={drink.idDrink}
-        className="group relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+        className="group bg-white brutal-border brutal-shadow-sm hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all cursor-pointer"
       >
-        <div className="relative aspect-square overflow-hidden">
+        <div className="relative aspect-square overflow-hidden brutal-border-b-6 border-black">
           <Image
             src={drink.strDrinkThumb}
             alt={drink.strDrink}
             fill
             sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
             loading="lazy"
-            className="object-cover transition-transform duration-300 group-hover:scale-110"
+            className="object-cover"
           />
         </div>
-        <div className="p-4">
-          <h3 className="text-sm md:text-base font-semibold text-gray-800 group-hover:text-gray-900 transition-colors duration-300 line-clamp-2">
+        <div className="p-3 md:p-4 bg-[#FFD700]">
+          <h3 className="text-sm md:text-base font-black uppercase tracking-tight line-clamp-2 h-12">
             {drink.strDrink}
           </h3>
         </div>

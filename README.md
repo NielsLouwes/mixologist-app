@@ -1,31 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Dit is een [Next.js](https://nextjs.org) project opgezet met [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+## Aan de slag
 
-Install the dependencies by running `pnpm install`
+Installeer de dependencies door `pnpm install` uit te voeren
 
-Then, run the development server:
+Start vervolgens de development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+
 pnpm dev
-# or
-bun dev
+
 ```
 
-## App instrunctions
+## App instructies
 
-This is a 3 page application.
+Dit is een applicatie met 4 pagina's.
 
-The homepage = Offers a quiz to test cocktail knowledge
-Search page = Returns a list of cocktails by ingredient (Free version of API limited to one ingredient)
-Cocktail details page = Shows details of selected cocktail
+- De homepage = Biedt een quiz om cocktailkennis te testen
+- Quiz resultatenpagina = Toont het resultaat van de quiz en optie om opnieuw te proberen
+- Zoekpagina = Geeft een lijst van cocktails terug op basis van ingrediënt (Gratis versie van API beperkt tot één ingrediënt)
+- Cocktail detailpagina = Toont details van geselecteerde cocktail en instructies voor de bereiding
 
-## Points of improvement
+## Verbeterpunten
 
-1. Centralize the API calls in its own service/file
-2. Transform the API data shape and use ZOD for validation
-3. Better way to show errors with fetching data to users
+1. Centraliseer de API calls in een eigen service/bestand
+2. Transformeer de API data structuur en gebruik ZOD voor validatie
+
+## Design
+
+- Design is snel geïmplementeerd met AI (Neo Brutalism)

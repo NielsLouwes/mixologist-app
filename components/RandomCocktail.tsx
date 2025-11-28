@@ -30,29 +30,37 @@ const RandomCocktail = async () => {
 
   return (
     <div>
-      <h2 className="mb-24 text-2xl font-bold">
-        This tool is for all aspiring mixologists who want to master their
-        cocktails. Guess the ingredients in each cocktail.
-      </h2>
+      <div className="brutal-border bg-[#FF6347] p-6 md:p-8 mb-6 md:mb-8 brutal-shadow-lg">
+        <h2 className="text-xl md:text-2xl font-black uppercase tracking-tight leading-tight">
+          This tool is for all aspiring mixologists who want to master their
+          cocktails. Can you guess the ingredients in each cocktail?
+        </h2>
+      </div>
 
-      <div className="flex gap-20">
-        <div>
-          <h3 className="font-extrabold text-2xl">{cocktail.strDrink}</h3>
-          <div className="border-rounded">
-            <Image
-              src={cocktail.strDrinkThumb}
-              alt="random cocktail"
-              width={450}
-              height={450}
-              loading="eager"
-              className="rounded-3xl mt-12"
-            />
+      <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
+        <div className="flex-1">
+          <div className="brutal-border bg-white p-4 md:p-6 brutal-shadow-lg">
+            <h3 className="font-black text-2xl md:text-3xl mb-4 uppercase tracking-tight">
+              {cocktail.strDrink}
+            </h3>
+            <div className="brutal-border brutal-shadow overflow-hidden">
+              <Image
+                src={cocktail.strDrinkThumb}
+                alt="random cocktail"
+                width={500}
+                height={500}
+                loading="eager"
+                className="w-full h-auto block"
+              />
+            </div>
           </div>
         </div>
-        <div>
-          <p className="font-bold text-xl flex mb-12">
-            Ingredients : {ingredientCount}
-          </p>
+        <div className="flex-1">
+          <div className="brutal-border bg-[#9370DB] p-4 md:p-6 mb-4 md:mb-6 brutal-shadow-sm">
+            <p className="font-black text-lg md:text-xl uppercase">
+              Ingredients: {ingredientCount}
+            </p>
+          </div>
           <DrinkForm ingredients={ingredients} />
         </div>
       </div>

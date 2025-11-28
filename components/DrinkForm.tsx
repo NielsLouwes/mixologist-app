@@ -22,19 +22,19 @@ const DrinkForm = ({ ingredients }: { ingredients: string[] }) => {
     router.push(`/result?${params.toString()}`);
   };
   return (
-    <div>
+    <div className="brutal-border bg-white p-4 md:p-6 brutal-shadow-lg">
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         {ingredients.map((_, index) => (
           <input
             placeholder={`Ingredient ${index + 1}`}
-            className="border rounded px-4 py-2"
+            className="brutal-border bg-[#F5F5F5] px-4 py-3 font-bold brutal-shadow-sm focus:outline-none focus:bg-white focus:shadow-none focus:translate-x-1 focus:translate-y-1 transition-all"
             key={index}
             name={`ingredient-${index}`}
           />
         ))}
         <button
           type="submit"
-          className="border rounded px-4 py-2 hover:border-2 hover:border-emerald-400 hover:cursor-pointer"
+          className="brutal-border bg-[#90EE90] px-6 py-4 font-black text-lg uppercase tracking-wide brutal-shadow-sm hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all cursor-pointer"
         >
           Submit
         </button>

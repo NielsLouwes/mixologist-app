@@ -11,9 +11,11 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
     return (
       <div className="w-full">
         <SearchIngredientForm />
-        <p className="mt-4 text-gray-600">
-          Enter an ingredient name to search for cocktails.
-        </p>
+        <div className="brutal-border bg-[#87CEEB] p-6 brutal-shadow-sm mt-6">
+          <p className="font-bold text-lg">
+            Enter an ingredient name to search for cocktails.
+          </p>
+        </div>
       </div>
     );
   }

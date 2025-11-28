@@ -26,16 +26,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased py-2 px-4 md:py-8 md:px-42 bg-slate-100`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased py-4 px-4 md:py-8 md:px-8 lg:px-16`}
       >
-        <div className="flex gap-12 mb-2 md:mb-10 ">
-          <Link href="/">
-            <button className="cursor-pointer">Home</button>
-          </Link>
-          <Link href="/search">
-            <button className="cursor-pointer">Search By Ingredient</button>
-          </Link>
-        </div>
+        <nav className="mb-8 md:mb-12">
+          <div className="flex flex-wrap gap-4 md:gap-6">
+            <Link href="/">
+              <button className="brutal-border bg-[#FFD700] px-6 py-3 font-bold text-lg brutal-shadow-sm hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all cursor-pointer uppercase tracking-wide">
+                Home
+              </button>
+            </Link>
+            <Link href="/search">
+              <button className="brutal-border bg-[#87CEEB] px-6 py-3 font-bold text-lg brutal-shadow-sm hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all cursor-pointer uppercase tracking-wide">
+                Search By Ingredient
+              </button>
+            </Link>
+          </div>
+        </nav>
         {children}
       </body>
     </html>

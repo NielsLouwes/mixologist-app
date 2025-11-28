@@ -28,19 +28,21 @@ const DrinkList = ({
 
   return (
     <div>
-      <div className="flex justify-between">
-        {cocktails.length > 0 && (
-          <>
-            <div>
+      {cocktails.length > 0 && (
+        <div className="brutal-border bg-[#FF69B4] p-4 md:p-6 mb-6 brutal-shadow-sm">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div className="font-black text-lg md:text-xl uppercase leading-[35px]">
               Returning cocktails with ingredient:{" "}
-              <span className="font-extrabold">{ingredient}</span>
+              <span className="bg-[#FFD700] px-2 py-1 brutal-border ">
+                {ingredient}
+              </span>
             </div>
-            <div>
-              <span className="mr-2">Sort by name:</span>
+            <div className="flex items-center gap-3">
+              <span className="font-bold">Sort by name:</span>
               {sortType === "asc" ? (
                 <button
                   onClick={() => setSortType("desc")}
-                  className="border-2 px-2 cursor-pointer text-sm md:text-lg"
+                  className="brutal-border bg-[#87CEEB] px-4 py-2 font-black text-sm md:text-base uppercase brutal-shadow-sm hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all cursor-pointer"
                   aria-label="Switch to descending sort (Z to A)"
                 >
                   A - Z
@@ -48,20 +50,24 @@ const DrinkList = ({
               ) : (
                 <button
                   onClick={() => setSortType("asc")}
-                  className="border-2 px-2 cursor-pointer text-sm md:text-lg"
+                  className="brutal-border bg-[#87CEEB] px-4 py-2 font-black text-sm md:text-base uppercase brutal-shadow-sm hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all cursor-pointer"
                   aria-label="Switch to ascending sort (A to Z)"
                 >
                   Z - A
                 </button>
               )}
             </div>
-          </>
-        )}
-      </div>
+          </div>
+        </div>
+      )}
       {sortedCocktails.length === 0 ? (
-        <p>No cocktails found for {ingredient}. Try another ingredient.</p>
+        <div className="brutal-border bg-[#FF6347] p-6 brutal-shadow-sm">
+          <p className="font-bold text-lg">
+            No cocktails found for {ingredient}. Try another ingredient.
+          </p>
+        </div>
       ) : (
-        <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 list-none p-0 m-0 mt-4">
+        <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 list-none p-0 m-0">
           {sortedCocktails.map((drink: SimpleDrink) => (
             <CocktailCard key={drink.idDrink} drink={drink} />
           ))}
