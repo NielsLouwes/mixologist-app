@@ -23,3 +23,9 @@ This is a 3 page application.
 The homepage = Offers a quiz to test cocktail knowledge
 Search page = Returns a list of cocktails by ingredient (Free version of API limited to one ingredient)
 Cocktail details page = Shows details of selected cocktail
+
+## Points of improvement
+
+1. Centralize the API calls in its own service/file
+2. Transform the API data shape and use ZOD for validation
+3. Better way to show errors with fetching data to users

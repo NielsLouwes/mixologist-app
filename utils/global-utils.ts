@@ -6,7 +6,7 @@ export const getIngredients = (drink?: Drink) => {
     return {
       ingredients: [],
       ingredientCount: 0,
-      combined: [],
+      measuredIngredients: [],
     };
   }
 
@@ -21,14 +21,14 @@ export const getIngredients = (drink?: Drink) => {
     if (measure) measurements.push(measure);
   }
 
-  const combined = ingredients.map((ing, idx) =>
+  const measuredIngredients = ingredients.map((ing, idx) =>
     measurements[idx] ? `${ing} - ${measurements[idx]}` : ing
   );
 
   return {
     ingredients,
     ingredientCount: ingredients.length,
-    combined,
+    measuredIngredients,
   };
 };
 

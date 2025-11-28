@@ -2,46 +2,43 @@ import { CocktailData } from "@/types/global-types";
 import { getIngredients } from "@/utils/global-utils";
 import Image from "next/image";
 
+const fetchCocktailById = async (id: string): Promise<CocktailData> => {
+  const response = await fetch(
+    `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch cocktail");
+  }
+
+  const data = await response.json();
+
+  if (!data?.drinks?.[0]) {
+    throw new Error("Cocktail not found");
+  }
+
+  return data;
+};
+
 const CocktailDetailsPage = async ({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) => {
   const { id } = await params;
+  const cocktail = await fetchCocktailById(id);
+  const drink = cocktail.drinks[0];
 
-  const fetchCocktailById = async (): Promise<CocktailData | undefined> => {
-    try {
-      const response = await fetch(
-        `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
-      );
-
-      if (!response.ok) {
-        console.error("failed to fetch data");
-      }
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const cocktail = await fetchCocktailById();
-  const drink = cocktail?.drinks[0];
-
-  if (!drink) {
-    return <div>No cocktail found</div>;
-  }
-
-  const { combined } = getIngredients(drink);
+  const { measuredIngredients } = getIngredients(drink);
 
   return (
     <div>
       <h1 className="font-bold">Cocktail name</h1>
-      <span>{cocktail?.drinks[0].strDrink}</span>
+      <span>{drink.strDrink}</span>
       <div>
         <Image
-          src={cocktail?.drinks[0].strDrinkThumb}
-          alt={cocktail?.drinks[0].strDrink}
+          src={drink.strDrinkThumb}
+          alt={drink.strDrink}
           sizes="(max-width: 768px) 25vw, (max-width: 1024px) 33vw, 25vw"
           loading="lazy"
           height={300}
@@ -51,12 +48,12 @@ const CocktailDetailsPage = async ({
       </div>
       <h2 className="font-bold my-4">Ingredients and measurements</h2>
       <ul>
-        {combined.map((ingredient) => (
+        {measuredIngredients.map((ingredient) => (
           <li key={ingredient}>{ingredient}</li>
         ))}
       </ul>
       <h2 className="font-bold my-2">Instructions</h2>
-      <p>{cocktail?.drinks[0].strInstructions}</p>
+      <p>{drink.strInstructions}</p>
     </div>
   );
 };

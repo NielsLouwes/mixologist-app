@@ -5,24 +5,36 @@ type SearchPageProps = { searchParams?: { ingredient?: string } };
 
 const SearchPage = async ({ searchParams }: SearchPageProps) => {
   const params = await searchParams;
-  const ingredient = params?.ingredient?.trim() || "gin".trim();
+  const ingredient = params?.ingredient?.trim();
+
+  if (!ingredient) {
+    return (
+      <div className="w-full">
+        <SearchIngredientForm />
+        <p className="mt-4 text-gray-600">
+          Enter an ingredient name to search for cocktails.
+        </p>
+      </div>
+    );
+  }
+
   const encodedIngredient = encodeURIComponent(ingredient);
 
   const fetchCocktailsByIngredient = async () => {
-    try {
-      const response = await fetch(
-        `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${encodedIngredient}`
-      );
+    const response = await fetch(
+      `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${encodedIngredient}`
+    );
 
-      const data = await response.json();
-      return data?.drinks ? data.drinks : [];
-    } catch (err) {
-      console.error("Error fetching cocktails", err);
-      return [];
+    if (!response.ok) {
+      throw new Error("Failed to fetch cocktails");
     }
+
+    const data = await response.json();
+    return data?.drinks || [];
   };
 
   const cocktails = await fetchCocktailsByIngredient();
+  console.log("cocktails", cocktails);
 
   return (
     <div className="w-full">
